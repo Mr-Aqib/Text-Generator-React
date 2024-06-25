@@ -9,18 +9,28 @@ const TextGenerator = () => {
     const handleGen = (e) =>
     {
         e.preventDefault()
-        const newdata = data.slice(0, value)
-        setMydata(newdata)
-        
+         
+          
         if (value)
         {
-            toast.success("Done")
+            if (value > data.length)
+            {
+                toast.error("Enter length must be less than data length")
+            }
+            else
+            {
+                toast.success("Done")
+           const newdata = data.slice(0, value)
+          setMydata(newdata)
+            setValue("")
+                
+                }
             
-        setValue("")
+            
         }
         else
         {
-            toast.error("Done")
+            toast.error("Enter length must be")
             }
        
         
