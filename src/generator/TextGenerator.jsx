@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { data } from './data'
 import toast from 'react-hot-toast'
@@ -36,12 +36,20 @@ const TextGenerator = () => {
         
        
     }
+    useEffect(() =>
+    {
+        if (value > data.length)
+            {
+            toast.error("Enter length must be less than data length")
+            return;
+            }
+    },[value])
   return (
       <>
           <div className="container">
-              <div className="col-lg-5  mx-auto rounded-3 shadow p-3 my-2">
+              <div className="border-1 border col-lg-5  mx-auto rounded-3 shadow p-3 my-2">
                   <form action="">
-                  <label htmlFor="">Enter Number Of Paras</label>
+                  <label className='label-text text-center fs-3 d-block' htmlFor="">Enter Number Of Paras</label>
                       <input value={value} onChange={(e)=> setValue(e.target.value)} type="number" placeholder='e.g-4' className='form-control' name="" id="" />
                       <button onClick={handleGen} className="btn btn-success my-1 d-block mx-auto">Enter</button>
                   </form>
